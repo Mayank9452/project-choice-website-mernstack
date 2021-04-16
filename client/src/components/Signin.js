@@ -5,6 +5,7 @@ import isEmail from 'validator/lib/isEmail';
 import { showErrorMsg } from '../helper/message';
 import { showLoading } from '../helper/loading';
 import { signin } from '../api/auth';
+import { response } from 'express';
 
 
 const Signin = () => {
@@ -53,6 +54,12 @@ const Signin = () => {
             setFormData({...formData, loading:true});
 
             signin(data)
+                .then(response => {
+
+                })
+                .catch(err => {
+                    console.log('signin api function error: ', err);
+                })
                 
         }
          
