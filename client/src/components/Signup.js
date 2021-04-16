@@ -1,16 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import isEmpty from 'validator/lib/isEmpty';
 import equals from 'validator/lib/equals';
 import isEmail from 'validator/lib/isEmail';
 import { showErrorMsg, showSuccessMsg } from '../helper/message';
+import { isAuthenticated } from '../helper/auth';
 import { showLoading } from '../helper/loading';
 // import './Signup.css';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 // import { response } from 'express';
 import {signup} from '../api/auth';
 
 
 const Signup = () => {
+    let history = useHistory();
+
+    useEffect(() => {
+        if(isAuthenticated() && isAuthenticated().role ===1) {
+            // console.log('Redirect to admin dashboard');
+            history.push('/admin/dashboard');
+        } else if (isAuthenticated() && isAuthenticated().role ===0){
+            // console.log('Redirecting to user dashboard');
+            history.push('/user/dashboard');
+        }
+    }, [history]);
+
+
+
     const[formData, setFormData] = useState({
         username:'ashutosh',
         email:'ashu@gmail.com',

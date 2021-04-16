@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import isEmpty from 'validator/lib/isEmpty';
 import isEmail from 'validator/lib/isEmail';
@@ -11,6 +11,16 @@ import { signin } from '../api/auth';
 
 const Signin = () => {
     let history = useHistory();
+
+    useEffect(() => {
+        if(isAuthenticated() && isAuthenticated().role ===1) {
+            // console.log('Redirect to admin dashboard');
+            history.push('/admin/dashboard');
+        } else if (isAuthenticated() && isAuthenticated().role ===0){
+            // console.log('Redirecting to user dashboard');
+            history.push('/user/dashboard');
+        }
+    }, [history]);
 
 
     const[formData, setFormData] = useState({
