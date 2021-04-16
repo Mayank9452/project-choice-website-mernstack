@@ -4,6 +4,7 @@ import isEmpty from 'validator/lib/isEmpty';
 import isEmail from 'validator/lib/isEmail';
 import { showErrorMsg } from '../helper/message';
 import { showLoading } from '../helper/loading';
+import { setAuthentication } from '../helper/auth';
 import { signin } from '../api/auth';
 import { response } from 'express';
 
@@ -54,8 +55,8 @@ const Signin = () => {
             setFormData({...formData, loading:true});
 
             signin(data)
-                .then(response => {
-
+                .then((response) => {
+                    setAuthentication(response.data.token, response.data.user);
                 })
                 .catch(err => {
                     console.log('signin api function error: ', err);
