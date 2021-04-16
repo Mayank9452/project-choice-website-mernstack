@@ -52,7 +52,7 @@ exports.signinController = async(req, res) => {
             });
         }
 
-        const isMatch = await bcrypt.compare(password, user.email);
+        const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
             return res.status(400).json({
                 errorMessage: 'Invalid credentials',
