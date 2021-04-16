@@ -73,7 +73,7 @@ exports.signinController = async(req, res) => {
 
             res.json({
                 token,
-                user: { id, username, email, role }
+                user: { _id, username, email, role }
             });
         })
 
