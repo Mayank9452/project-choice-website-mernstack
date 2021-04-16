@@ -4,9 +4,9 @@ import isEmpty from 'validator/lib/isEmpty';
 import isEmail from 'validator/lib/isEmail';
 import { showErrorMsg } from '../helper/message';
 import { showLoading } from '../helper/loading';
-import { setAuthentication } from '../helper/auth';
+import { setAuthentication, isAuthenticated } from '../helper/auth';
 import { signin } from '../api/auth';
-import { response } from 'express';
+// import { response } from 'express';
 
 
 const Signin = () => {
@@ -15,14 +15,13 @@ const Signin = () => {
         password:'abc123',
         errorMsg: false,
         loading: false,
-        redirectToDashboard: false,
     });
     const {
         email,
         password,
         errorMsg,
         loading,
-        redirectToDashboard
+        // redirectToDashboard
         } = formData;
 
 
@@ -57,6 +56,12 @@ const Signin = () => {
             signin(data)
                 .then((response) => {
                     setAuthentication(response.data.token, response.data.user);
+
+                    if(isAuthenticated() && isAuthenticated().role ===1) {
+                        console.log('Redirect to admin dashboard');
+                    } else {
+                        console.log('Redirecting to user dashboard');
+                    }
                 })
                 .catch(err => {
                     console.log('signin api function error: ', err);
