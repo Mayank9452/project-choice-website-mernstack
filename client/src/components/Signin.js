@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import isEmpty from 'validator/lib/isEmpty';
 import isEmail from 'validator/lib/isEmail';
 import { showErrorMsg } from '../helper/message';
@@ -10,6 +10,9 @@ import { signin } from '../api/auth';
 
 
 const Signin = () => {
+    let history = useHistory();
+
+
     const[formData, setFormData] = useState({
         email:'ashu@gmail.com',
         password:'abc123',
@@ -59,8 +62,10 @@ const Signin = () => {
 
                     if(isAuthenticated() && isAuthenticated().role ===1) {
                         console.log('Redirect to admin dashboard');
+                        history.push('/admin/dashboard');
                     } else {
                         console.log('Redirecting to user dashboard');
+                        history.push('/user/dashboard');
                     }
                 })
                 .catch(err => {
