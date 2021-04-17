@@ -1,5 +1,5 @@
 import React, {Fragment} from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { isAuthenticated } from '../helper/auth';
 
 
@@ -28,9 +28,45 @@ const Header = () => {
                         </Fragment>
                     )}
 
-
-
-                
+                    {isAuthenticated && isAuthenticated().role === 0 && (
+                        <Fragment>
+                            <li className="nav-item">
+                                <Link to = '/user/dashboard' className="nav-link">Dashboard</Link>
+                            </li>
+                            {/* <li className="nav-item">
+                                <Link to = '/signup' className="nav-link">SignUp</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link to = '/signin' className="nav-link">Signin</Link>
+                            </li> */}
+                        </Fragment>
+                    )}
+                    {isAuthenticated && isAuthenticated().role === 1 && (
+                        <Fragment>
+                            <li className="nav-item">
+                                <Link to = '/admin/dashboard' className="nav-link">Dashboard</Link>
+                            </li>
+                            {/* <li className="nav-item">
+                                <Link to = '/signup' className="nav-link">SignUp</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link to = '/signin' className="nav-link">Signin</Link>
+                            </li> */}
+                        </Fragment>
+                    )}
+                    {isAuthenticated && (
+                        <Fragment>
+                            <li className="nav-item">
+                                <Link to = '/user/dashboard' className="nav-link">Logout</Link>
+                            </li>
+                            {/* <li className="nav-item">
+                                <Link to = '/signup' className="nav-link">SignUp</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link to = '/signin' className="nav-link">Signin</Link>
+                            </li> */}
+                        </Fragment>
+                    )}
                 </ul>
                 </div>
             </div>
@@ -42,4 +78,4 @@ const Header = () => {
 };
 
 
-export default Header; 
+export default withRouter(Header); 
