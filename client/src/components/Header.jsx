@@ -63,7 +63,7 @@ const Header = ({ history }) => {
                     {isAuthenticated && (
                         <Fragment>
                             <li className="nav-item">
-                                <Link to = '/user/dashboard' className="nav-link" onClick={handleLogout}>Logout</Link>
+                                <button className='btn btn-link text-secondary text-decoration-none px-0' onClick={handleLogout}>Logout</button>
                             </li>
                             {/* <li className="nav-item">
                                 <Link to = '/signup' className="nav-link">SignUp</Link>
