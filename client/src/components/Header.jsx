@@ -23,13 +23,13 @@ const Header = ({ history }) => {
                     {!isAuthenticated() && (
                         <Fragment>
                             <li className="nav-item">
-                                <Link to = '/' className="nav-link">Home</Link>
+                                <Link to = '/' className="nav-link"><i className="fas fa-home"></i> Home</Link>
                             </li>
                             <li className="nav-item">
-                                <Link to = '/signup' className="nav-link">SignUp</Link>
+                                <Link to = '/signup' className="nav-link"><i className="fas fa-edit"></i> SignUp</Link>
                             </li>
                             <li className="nav-item">
-                                <Link to = '/signin' className="nav-link">Signin</Link>
+                                <Link to = '/signin' className="nav-link"><i className="fas fa-sign-in-alt"></i> Signin</Link>
                             </li>
                         </Fragment>
                     )}
@@ -37,7 +37,7 @@ const Header = ({ history }) => {
                     {isAuthenticated && isAuthenticated().role === 0 && (
                         <Fragment>
                             <li className="nav-item">
-                                <Link to = '/user/dashboard' className="nav-link">Dashboard</Link>
+                                <Link to = '/user/dashboard' className="nav-link"><i class="fas fa-home"></i> Dashboard</Link>
                             </li>
                             {/* <li className="nav-item">
                                 <Link to = '/signup' className="nav-link">SignUp</Link>
@@ -50,7 +50,7 @@ const Header = ({ history }) => {
                     {isAuthenticated && isAuthenticated().role === 1 && (
                         <Fragment>
                             <li className="nav-item">
-                                <Link to = '/admin/dashboard' className="nav-link">Dashboard</Link>
+                                <Link to = '/admin/dashboard' className="nav-link"><i class="fas fa-home"></i> Dashboard</Link>
                             </li>
                             {/* <li className="nav-item">
                                 <Link to = '/signup' className="nav-link">SignUp</Link>
@@ -63,7 +63,7 @@ const Header = ({ history }) => {
                     {isAuthenticated() && (
                         <Fragment>
                             <li className="nav-item">
-                                <button className='btn btn-link text-secondary text-decoration-none px-0' onClick={handleLogout}>Logout</button>
+                                <button className='btn btn-link text-secondary text-decoration-none px-0' onClick={handleLogout}><i class="fas fa-sign-out-alt"></i> Logout</button>
                             </li>
                             {/* <li className="nav-item">
                                 <Link to = '/signup' className="nav-link">SignUp</Link>
