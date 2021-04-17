@@ -60,7 +60,7 @@ const Header = ({ history }) => {
                             </li> */}
                         </Fragment>
                     )}
-                    {isAuthenticated && (
+                    {isAuthenticated() && (
                         <Fragment>
                             <li className="nav-item">
                                 <button className='btn btn-link text-secondary text-decoration-none px-0' onClick={handleLogout}>Logout</button>
