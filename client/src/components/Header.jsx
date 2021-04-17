@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import { Link } from 'react-router-dom';
+import { isAuthenticated } from '../helper/auth';
 
 
 const Header = () => {
@@ -13,15 +14,23 @@ const Header = () => {
                 </button>
                 <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
                 <ul className="navbar-nav ml-auto mb-2 mb-lg-0">
-                <li className="nav-item">
-                    <Link to = '/' className="nav-link">Home</Link>
-                    </li>
-                    <li className="nav-item">
-                    <Link to = '/signup' className="nav-link">SignUp</Link>
-                    </li>
-                    <li className="nav-item">
-                    <Link to = '/signin' className="nav-link">Signin</Link>
-                    </li>
+                    {!isAuthenticated() && (
+                        <Fragment>
+                            <li className="nav-item">
+                                <Link to = '/' className="nav-link">Home</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link to = '/signup' className="nav-link">SignUp</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link to = '/signin' className="nav-link">Signin</Link>
+                            </li>
+                        </Fragment>
+                    )}
+
+
+
+                
                 </ul>
                 </div>
             </div>
