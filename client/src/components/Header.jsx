@@ -1,9 +1,15 @@
 import React, {Fragment} from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import { isAuthenticated } from '../helper/auth';
+import { isAuthenticated, logout } from '../helper/auth';
 
 
-const Header = () => {
+const Header = ({ history }) => {
+    const handleLogout = evt => {
+        logout(() => {
+            history.push('/signin');
+        });
+    };
+
     //views
     const showNavigation = () => (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -57,7 +63,7 @@ const Header = () => {
                     {isAuthenticated && (
                         <Fragment>
                             <li className="nav-item">
-                                <Link to = '/user/dashboard' className="nav-link">Logout</Link>
+                                <Link to = '/user/dashboard' className="nav-link" onClick={handleLogout}>Logout</Link>
                             </li>
                             {/* <li className="nav-item">
                                 <Link to = '/signup' className="nav-link">SignUp</Link>
