@@ -1,9 +1,10 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import { createCategory, getCategories } from '../api/category';
+import { createProduct } from '../api/product';
 import isEmpty from 'validator/lib/isEmpty';
 import {showErrorMsg, showSuccessMsg } from '../helper/message';
 import { showLoading } from '../helper/loading';
-// import { response } from 'express';
+
 
 const AdminDashboard = () => {
     const [categories, setCategories] = useState(null);
@@ -87,6 +88,38 @@ const AdminDashboard = () => {
             [evt.target.name]: evt.target.value,
         })
     };
+    const handleProductSubmit = evt => {
+        evt.preventDefault();
+
+        if (productImage === null) {
+            setErrorMsg('Please select an image');
+        } else if (isEmpty(productName) || isEmpty(productDesc) || isEmpty(productPrice) ) {
+            setErrorMsg('All fields are required');
+        } else if (isEmpty(productCategory)) {
+            setErrorMsg('Please select category');
+        } else if (isEmpty(productQty)) {
+            setErrorMsg('Please select a quantity');
+        } else {
+            let formData = new FormData();
+            formData.append('productImage', productImage);
+            formData.append('productName', productName);
+            formData.append('productDesc', productDesc);
+            formData.append('productPrice', productPrice);
+            formData.append('productCategory', productCategory);
+            formData.append('productQty', productQty);
+
+
+            createProduct(formData)
+                .then(response => {
+                    console.log('Server response: ', response);
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+        }
+    };
+
+
     // ###### view #####
     const showHeader = () => (
         
@@ -174,7 +207,7 @@ const AdminDashboard = () => {
         <div id='addProjectModal' className='modal' onClick={handleMessages}>
             <div className='modal-dialog modal-dialog-centered modal-lg'>
                 <div className='modal-content'>
-                    <form onSubmit={handleCategorySubmit}>
+                    <form onSubmit={handleProductSubmit}>
                         <div className='modal-header bg-warning text-white'>
                             <h5 className='modal-title'>Add Category</h5>
                             <button className='close' data-bs-dismiss='modal'>
