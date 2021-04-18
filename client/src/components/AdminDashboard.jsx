@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const AdminDashboard = () => {
+
+    const {category, setCategory} = useState('');
+
+
     // ###### view #####
     const showHeader = () => (
         
