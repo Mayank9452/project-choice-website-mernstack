@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { createCategory } from '../api/category';
 
 const AdminDashboard = () => {
 
@@ -13,7 +14,8 @@ const AdminDashboard = () => {
     const handleCategorySubmit = evt => {
         evt.preventDefault();
         // console.log(category);
-        createCategory();
+        const data ={ category }
+        createCategory(data);
     }
 
 
