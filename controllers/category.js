@@ -1,4 +1,4 @@
-exports.categoryController = (req, res) => {
+exports.create = (req, res) => {
     // console.log('Inside categoryController');
 
     setTimeout(() => {
