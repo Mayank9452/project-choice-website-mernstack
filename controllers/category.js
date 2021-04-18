@@ -20,7 +20,23 @@ exports.create = async(req, res) => {
             successMessage: `${newCategory.category} was created!`,
         })
     } catch (err) {
-        console.log('category error: ', err);
+        console.log('category create error: ', err);
+        res.status(500).json({
+            errorMessage: 'Please try again later',
+        })
+    }
+};
+
+exports.readAll = async(req, res) => {
+
+    try {
+        const categories = await Category.find({});
+
+        res.status(200).json({
+            categories,
+        });
+    } catch (err) {
+        console.log('category readAll error: ', err);
         res.status(500).json({
             errorMessage: 'Please try again later',
         })
