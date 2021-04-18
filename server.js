@@ -6,7 +6,6 @@ const cookieParser = require('cookie-parser');
 const connectDB = require('./database/db');
 const authRoutes = require('./routes/auth');
 const categoryRoutes = require('./routes/category');
-const cookieParser = require('cookie-parser');
 
 
 //middleware
