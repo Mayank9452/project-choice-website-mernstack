@@ -12,7 +12,8 @@ const AdminDashboard = () => {
 
     const handleCategorySubmit = evt => {
         evt.preventDefault();
-        console.log(category);
+        // console.log(category);
+        createCategory();
     }
 
 
