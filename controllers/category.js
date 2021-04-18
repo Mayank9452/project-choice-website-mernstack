@@ -1,3 +1,6 @@
+const Category = require('../models/Category');
+
+
 exports.create = (req, res) => {
     // console.log('Inside categoryController');
     console.log(req.user);
