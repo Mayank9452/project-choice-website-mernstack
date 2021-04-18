@@ -2,7 +2,18 @@ import React, { useState } from 'react';
 
 const AdminDashboard = () => {
 
-    const {category, setCategory} = useState('');
+    const [category, setCategory] = useState('');
+
+    //****event handler */
+    const handleCategoryChange = evt => {
+        setCategory(evt.target.value);
+        // console.log(category);
+    }
+
+    const handleCategorySubmit = evt => {
+        evt.preventDefault();
+        console.log(category);
+    }
 
 
     // ###### view #####
@@ -53,6 +64,7 @@ const AdminDashboard = () => {
         <div id='addCategoryModal' className='modal'>
             <div className='modal-dialog modal-dialog-centered modal-lg'>
                 <div className='modal-content'>
+                <form onSubmit={handleCategorySubmit}>
                     <div className='modal-header bg-info text-white'>
                         <h5 className='modal-title'>Add Category</h5>
                         <button className='close' data-bs-dismiss='modal'>
@@ -60,15 +72,16 @@ const AdminDashboard = () => {
                         </button>
                     </div>
                     <div className='modal-body'>
-                        <form>
+                        
                             <label className='text-secondary'>Category</label>
-                            <input type='text' className='form-control' />
-                        </form>
+                            <input type='text' className='form-control' name='category' value={category} onChange={handleCategoryChange} />
+                        
                     </div>
                     <div className='modal-footer'>
                         <button className='btn btn-secondary' data-bs-dismiss='modal'>Close</button>
-                        <button className='btn btn-info'>Submit</button>
+                        <button type='submit' className='btn btn-info'>Submit</button>
                     </div>
+                    </form>
                 </div>
             </div>
         </div>
