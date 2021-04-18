@@ -1,16 +1,25 @@
-import React, { Fragment, useState } from 'react';
-import { createCategory } from '../api/category';
+import React, { Fragment, useState, useEffect } from 'react';
+import { createCategory, getCategories } from '../api/category';
 import isEmpty from 'validator/lib/isEmpty';
 import {showErrorMsg, showSuccessMsg } from '../helper/message';
 import { showLoading } from '../helper/loading';
 // import { response } from 'express';
 
 const AdminDashboard = () => {
-
+    const [categories, setCategories] = useState(null);
     const [category, setCategory] = useState('');
     const [errorMsg, setErrorMsg] = useState('');
     const [successMsg, setSuccessMsg] = useState('');
     const [loading, setLoading] = useState(false);
+
+    //*****Life Cycle Methods */
+    useEffect(() =>{
+        loadCategories();
+    }, [])
+
+    const loadCategories = async () => {
+        await getCategories()
+    }
 
     //****event handler */
 
