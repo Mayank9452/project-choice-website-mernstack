@@ -15,11 +15,18 @@ const AdminDashboard = () => {
     //*****Life Cycle Methods */
     useEffect(() =>{
         loadCategories();
-    }, [])
+    }, [loading])
 
     const loadCategories = async () => {
         await getCategories()
-    }
+            .then(response => {
+                setCategories(response.data.categories);
+                console.log(categories);
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    };
 
     //****event handler */
 
@@ -182,9 +189,9 @@ const AdminDashboard = () => {
                                                 <label className='text-secondary mb-2'>Category</label>
                                                 <select className='form-select'>
                                                     <option>Choose one...</option>
-                                                    <option>fisrt</option>
-                                                    <option>second</option>
-                                                    <option>third</option>
+                                                    {categories && categories.map(c => (
+                                                        <option key={c._id} value={c._id}>{c.category}</option>
+                                                    ))}
                                                 </select>
                                             </div>
                                             <div className='form-group col'>
