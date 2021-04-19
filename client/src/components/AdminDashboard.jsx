@@ -271,8 +271,7 @@ const AdminDashboard = () => {
 
 //// ##### RENDER ######
     return (
-        <section>
-            {JSON.stringify(productData)}
+        <section>   
             { showHeader() }
             { showActionBtns() }
             { showCategoryModal() }
