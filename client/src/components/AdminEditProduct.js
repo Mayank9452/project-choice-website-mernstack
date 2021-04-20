@@ -34,18 +34,18 @@ const AdminEditProduct = ({ match, history }) => {
 	 * LIFECYCLE METHODS
 	 ***************************/
 	useEffect(() => {
-		// if (!product) {
+		if (!product) {
 			dispatch(getProduct(productId));
 			// dispatch(getCategories());
-		// } else {
-		// 	setProductImage(product.fileName);
-		// 	setProductName(product.productName);
-		// 	setProductDesc(product.productDesc);
-		// 	setProductPrice(product.productPrice);
-		// 	setProductCategory(product.productCategory);
-		// 	setProductQty(product.productQty);
-		// }
-	}, [dispatch, productId]);
+		} else {
+			setProductImage(product.fileName);
+			setProductName(product.productName);
+			setProductDesc(product.productDesc);
+			setProductPrice(product.productPrice);
+			setProductCategory(product.productCategory);
+			setProductQty(product.productQty);
+		}
+	}, [dispatch, productId, product]);
 
 	return(
         <div>Inside edit Component.</div>
