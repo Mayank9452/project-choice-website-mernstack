@@ -7,6 +7,7 @@ const productController = require('../controllers/product');
 router.post('/', authenticateJWT, upload.single('productImage'), productController.create);
 
 router.get('/', productController.readAll);
+router.get('/:productId', productController.read);
 router.delete('/:productId', authenticateJWT, productController.delete);
 
 
