@@ -10,7 +10,7 @@ router.get('/', productController.readAll);
 router.get('/:productId', productController.read);
 router.put(
     '/:productId',
-    authenticatateJWT,
+    authenticateJWT,
     upload.single('productImage'),
     productController.update
 );
