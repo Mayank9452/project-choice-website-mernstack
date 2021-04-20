@@ -19,6 +19,7 @@ const AdminEditProduct = ({ match, history }) => {
 	 ***************************/
 	const dispatch = useDispatch();
     const { product } = useSelector(state => state.products);
+    const { categories } = useSelector(state => state.categories);
 
     /****************************
 	 * COMPONENT STATE PROPERTIES
