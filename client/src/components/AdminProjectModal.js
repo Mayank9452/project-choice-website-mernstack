@@ -1,17 +1,24 @@
-import React, { Fragment, useState, useEffect } from 'react';
-import { createProduct } from '../api/product';
-import { getCategories } from '../api/category';
+import React, { Fragment, useState } from 'react'; 
 import isEmpty from 'validator/lib/isEmpty';
 import {showErrorMsg, showSuccessMsg } from '../helper/message';
 import { showLoading } from '../helper/loading';
+//redux
+import { useSelector, useDispatch } from "react-redux";
+import { clearMessages } from '../redux/actions/messageActions';
+import { createProduct } from '../redux/actions/productActions';
 
 
 const AdminProjectModal = () => {
+    ////******* Redux Global State Property********* *///////
+    const { loading } = useSelector(state => state.loading);
+    const { successMsg, errorMsg } = useSelector(state => state.messages);
+    const { categories } = useSelector(state => state.categories);
+
+    const dispatch = useDispatch();
+
     ////******* component State Property********* *///////
-    const [categories, setCategories] = useState(null);
-    const [errorMsg, setErrorMsg] = useState('');
-    const [successMsg, setSuccessMsg] = useState('');
-    const [loading, setLoading] = useState(false);
+    const [clientSideError, setClientSideError ] = useState('');
+
     const [productData, setProductData] = useState({
         productImage: null,
         productName: '',
@@ -23,26 +30,10 @@ const AdminProjectModal = () => {
 
     const { productImage, productName, productDesc, productPrice, productCategory, productQty } = productData;
 
-    //*****Life Cycle Methods */
-    useEffect(() =>{
-        loadCategories();
-    }, [loading]);
-
-    const loadCategories = async () => {
-        await getCategories()
-            .then(response => {
-                setCategories(response.data.categories);
-                console.log(categories);
-            })
-            .catch(err => {
-                console.log(err);
-            })
-    };
-
     //// ******* Event Handler*******//////
     const handleMessages = evt => {
-        setErrorMsg('');
-        setSuccessMsg('');
+        dispatch(clearMessages());
+        setClientSideError('');
     }
 
     const handleProductImage = evt => {
@@ -62,13 +53,13 @@ const AdminProjectModal = () => {
         evt.preventDefault();
 
         if (productImage === null) {
-            setErrorMsg('Please select an image');
+            setClientSideError('Please select an image');
         } else if (isEmpty(productName) || isEmpty(productDesc) || isEmpty(productPrice) ) {
-            setErrorMsg('All fields are required');
+            setClientSideError('All fields are required');
         } else if (isEmpty(productCategory)) {
-            setErrorMsg('Please select category');
+            setClientSideError('Please select category');
         } else if (isEmpty(productQty)) {
-            setErrorMsg('Please select a quantity');
+            setClientSideError('Please select a quantity');
         } else {
             let formData = new FormData();
             formData.append('productImage', productImage);
@@ -78,26 +69,15 @@ const AdminProjectModal = () => {
             formData.append('productCategory', productCategory);
             formData.append('productQty', productQty);
 
-            setLoading(true)
-            createProduct(formData)
-                .then(response => {
-                    setLoading(false)
-                    // console.log('Server response: ', response);
-                    setProductData({
-                        productImage: null,
-                        productName: '',
-                        productDesc: '',
-                        productPrice: '',
-                        productCategory: '',
-                        productQty: '',
-                    })
-                    setSuccessMsg(response.data.successMessage);
-                })
-                .catch(err => {
-                    setLoading(false)
-                    console.log(err);
-                    setErrorMsg(err.response.data.errorMessage)
-                })
+            dispatch(createProduct(formData));
+            setProductData({
+                productImage: null,
+                productName: '',
+                productDesc: '',
+                productPrice: '',
+                productCategory: '',
+                productQty: '',
+            });
         }
     };
 
@@ -115,6 +95,7 @@ const AdminProjectModal = () => {
                         </button>
                     </div>
                     <div className='modal-body'>
+                        {clientSideError && showErrorMsg(clientSideError)}
                         {errorMsg && showErrorMsg(errorMsg)}
                         {successMsg && showSuccessMsg(successMsg)}
                         {
