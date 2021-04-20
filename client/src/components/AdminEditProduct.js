@@ -53,7 +53,7 @@ const AdminEditProduct = ({ match, history }) => {
 	 ***************************/
 
 	return(
-        <div>{productName}</div>
+        <div>{JSON.stringfy(categories)}</div>
     );
 };
 
