@@ -1,6 +1,11 @@
 import React from 'react';
+// redux
+import { useDispatch } from 'react-redux';
+import { deleteProduct } from '../redux/actions/productActions';
 
-const Card =({ product }) => (
+const Card =({ product }) => {
+    const dispatch = useDispatch();
+    return (
     <div className='col-md-4 my-3'>
         <div className='card h-100'>
             <a href="#!">
@@ -37,6 +42,7 @@ const Card =({ product }) => (
                 <button
                     type='button'
                     className='btn btn-danger btn-sm'
+                    onClick={() => dispatch(deleteProduct(product._id))}
                 >
                     <i className='far fa-trash-alt pr-1'></i>
                         Delete
@@ -45,7 +51,7 @@ const Card =({ product }) => (
 
         </div>
     </div>
-
-);
+    )
+};
 
 export default Card;
