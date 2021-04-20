@@ -4,6 +4,7 @@ import AdminHeader from './AdminHeader';
 import AdminActionBtns from './AdminActionBtns';
 import AdminCategoryModal from './AdminCategoryModal';
 import AdminProjectModal from './AdminProjectModal';
+import AdminBody from './AdminBody'
 //redux
 import { useDispatch } from "react-redux";
 import { getCategories } from "../redux/actions/categoryActions";
