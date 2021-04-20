@@ -43,7 +43,7 @@ exports.readAll = async(req, res) => {
 
     try {
         const products = await Product.find({}).populate('productCategory', 'category');
-        res.json(products);
+        res.json({ products });
     } catch (err) {
         console.log(err, 'productController.readAll error');
         res.statud(500).json({
