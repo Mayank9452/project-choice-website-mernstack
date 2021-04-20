@@ -8,6 +8,12 @@ router.post('/', authenticateJWT, upload.single('productImage'), productControll
 
 router.get('/', productController.readAll);
 router.get('/:productId', productController.read);
+router.put(
+    '/:productId',
+    authenticatateJWT,
+    upload.single('productImage'),
+    productController.update
+);
 router.delete('/:productId', authenticateJWT, productController.delete);
 
 
