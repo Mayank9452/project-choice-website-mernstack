@@ -1,4 +1,5 @@
 import React from 'react';
+import Card from './Card';
 //redux
 import { useSelector } from "react-redux";
 
@@ -10,7 +11,7 @@ import { useSelector } from "react-redux";
                  <div className='card-deck'>
                      {products.map(product => (
                          <div>
-                             <div className='card'>{product.productName}</div>
+                             <Card key={product._id} product={product} />
                          </div>
                      ))}
                  </div>
