@@ -1,4 +1,4 @@
-import { GET_PRODUCTS } from "../constants/productConstants";
+import { CREATE_PRODUCTS, GET_PRODUCTS } from "../constants/productConstants";
 
 
 const INITIAL_STATE = {
@@ -7,6 +7,10 @@ const INITIAL_STATE = {
 
 const productReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
+        case CREATE_PRODUCTS:
+            return {
+                products: [...state.products, action.payload],
+            }
         case GET_PRODUCTS:
             return {
                 products: [...action.payload]
