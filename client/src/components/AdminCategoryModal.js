@@ -41,7 +41,8 @@ const AdminCategoryModal = () => {
             setClientSideErrorMsg('Please enter a category')
         } else {
             const data ={ category }
-            dispatch(createCategory(data))
+            dispatch(createCategory(data));
+            setCategory('');
         }
 
     };
