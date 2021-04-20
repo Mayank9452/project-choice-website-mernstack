@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './App.css';
 import Header from './Header';
@@ -10,17 +10,9 @@ import AdminDashboard from './AdminDashboard';
 import NotFound from './NotFound';
 import AdminRoute from './AdminRoute';
 import UserRoute from './UserRoute';
-//redux
-import { useDispatch } from 'react-redux';
-import { getCategories } from '../redux/actions/categoryActions';
 
 
 const App = () => { 
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getCategories());
-  }, [dispatch]);
   
   return (
   <BrowserRouter>
