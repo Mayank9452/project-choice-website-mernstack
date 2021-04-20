@@ -103,7 +103,7 @@ const AdminEditProduct = ({ match, history }) => {
 								<form onSubmit={handleProductSubmit}>
 									<div className='modal-header bg-warning text-white'>
 										<h5 className='modal-title'>
-											Update Food
+											Update Project
 										</h5>
 									</div>
 									<div className='modal-body my-2'>
