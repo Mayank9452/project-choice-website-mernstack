@@ -2,8 +2,8 @@ import React, { useState, useEffect, Fragment } from 'react';
 // import axios from 'axios';
 // import AdminHeader from './AdminHeader';
 // import { Link } from 'react-router-dom';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { getProduct } from '../redux/actions/productActions';
+import { useDispatch, useSelector } from 'react-redux';
+import { getProduct } from '../redux/actions/productActions';
 // import { getCategories } from '../redux/actions/categoryActions';
 
 const AdminEditProduct = ({ match, history }) => {
@@ -15,6 +15,11 @@ const AdminEditProduct = ({ match, history }) => {
     // console.log(productId);
 
     /****************************
+	 * REDUX GLOBAL STATE PROPERTIES
+	 ***************************/
+	const dispatch = useDispatch();
+
+    /****************************
 	 * COMPONENT STATE PROPERTIES
 	 ***************************/
 	const [productImage, setProductImage] = useState(null);
@@ -23,6 +28,23 @@ const AdminEditProduct = ({ match, history }) => {
 	const [productPrice, setProductPrice] = useState('');
 	const [productCategory, setProductCategory] = useState('');
 	const [productQty, setProductQty] = useState('');
+
+    /****************************
+	 * LIFECYCLE METHODS
+	 ***************************/
+	useEffect(() => {
+		// if (!product) {
+			dispatch(getProduct(productId));
+			// dispatch(getCategories());
+		// } else {
+		// 	setProductImage(product.fileName);
+		// 	setProductName(product.productName);
+		// 	setProductDesc(product.productDesc);
+		// 	setProductPrice(product.productPrice);
+		// 	setProductCategory(product.productCategory);
+		// 	setProductQty(product.productQty);
+		// }
+	}, [dispatch, productId]);
 
 	return(
         <div>Inside edit Component.</div>
