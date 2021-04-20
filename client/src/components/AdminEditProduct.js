@@ -14,6 +14,16 @@ const AdminEditProduct = ({ match, history }) => {
 	const productId = match.params.productId;
     // console.log(productId);
 
+    /****************************
+	 * COMPONENT STATE PROPERTIES
+	 ***************************/
+	const [productImage, setProductImage] = useState(null);
+    const [productName, setProductName] = useState('');
+	const [productDesc, setProductDesc] = useState('');
+	const [productPrice, setProductPrice] = useState('');
+	const [productCategory, setProductCategory] = useState('');
+	const [productQty, setProductQty] = useState('');
+
 	return(
         <div>Inside edit Component.</div>
     );
