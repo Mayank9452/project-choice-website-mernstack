@@ -4,7 +4,7 @@ import React, { useState, useEffect, Fragment } from 'react';
 // import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProduct } from '../redux/actions/productActions';
-// import { getCategories } from '../redux/actions/categoryActions';
+import { getCategories } from '../redux/actions/categoryActions';
 
 const AdminEditProduct = ({ match, history }) => {
 
@@ -36,7 +36,7 @@ const AdminEditProduct = ({ match, history }) => {
 	useEffect(() => {
 		if (!product) {
 			dispatch(getProduct(productId));
-			// dispatch(getCategories());
+			dispatch(getCategories());
 		} else {
 			setProductImage(product.fileName);
 			setProductName(product.productName);
@@ -47,8 +47,12 @@ const AdminEditProduct = ({ match, history }) => {
 		}
 	}, [dispatch, productId, product]);
 
+    /****************************
+	 * RENDERER
+	 ***************************/
+
 	return(
-        <div>Inside edit Component.</div>
+        <div>{productName}</div>
     );
 };
 
