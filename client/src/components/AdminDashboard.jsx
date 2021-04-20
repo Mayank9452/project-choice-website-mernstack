@@ -25,7 +25,8 @@ const AdminDashboard = () => {
             <AdminHeader />
             <AdminActionBtns />
             <AdminCategoryModal />
-            < AdminProjectModal />
+            <AdminProjectModal />
+            <AdminBody />
         </section>
     );
 };
