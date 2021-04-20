@@ -36,3 +36,23 @@ exports.create = async(req, res) => {
     //     message: 'Inside productController',
     // });
 };
+
+
+exports.readAll = async(req, res) => {
+
+
+    try {
+        const products = await Product.find({}).populate('productCategory', 'category');
+        res.json(products);
+    } catch (err) {
+        console.log(err, 'productController.readAll error');
+        res.statud(500).json({
+            errorMessage: 'Please try again later'
+        })
+    }
+
+
+    // res.json({
+    //     message: 'Inside productController',
+    // });
+};
