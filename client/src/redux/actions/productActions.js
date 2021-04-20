@@ -8,7 +8,7 @@ import {
 export const createProduct = formData => async dispatch => {
     try {
         dispatch({ type: START_LOADING })
-        const response = await axios.post('/api/product', formdata);
+        const response = await axios.post('/api/product', formData);
         dispatch({ type: STOP_LOADING })
         dispatch({ type: SHOW_SUCCESS_MESSAGE, payload: response.data.successMessage })
 
