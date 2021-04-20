@@ -18,6 +18,7 @@ const AdminEditProduct = ({ match, history }) => {
 	 * REDUX GLOBAL STATE PROPERTIES
 	 ***************************/
 	const dispatch = useDispatch();
+    const { product } = useSelector(state => state.products);
 
     /****************************
 	 * COMPONENT STATE PROPERTIES
