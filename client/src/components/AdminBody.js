@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
          <div className='container'>
              <div className='row'>
                  <div className='card-deck'>
-                     {products.map(product => (
+                     {products && products.map(product => (
                          <div>
                              <Card key={product._id} product={product} />
                          </div>
