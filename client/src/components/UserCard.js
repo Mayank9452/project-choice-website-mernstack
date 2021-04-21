@@ -8,7 +8,7 @@ const UserCard = () => {
     const dispatch = useDispatch();
     return(
         <div>
-            <div className="card">
+            <div className="card" style={{width: '18rem'}}>
 
             </div>
         </div>
