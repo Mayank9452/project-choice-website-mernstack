@@ -17,6 +17,9 @@ const UserCard = () => {
                         height="200px"
                     />
                 </a>
+                <div className="card-body">
+                    
+                </div>
             </div>
         </div>
     );
