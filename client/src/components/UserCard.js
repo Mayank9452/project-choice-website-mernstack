@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 // redux
-import { useDispatch } from 'react-redux';
-import { deleteProduct } from '../redux/actions/productActions';
+// import { useDispatch } from 'react-redux';
+// import { deleteProduct } from '../redux/actions/productActions';
 
 const Card =({ product }) => {
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
     return (
     // <div className='col-md-4 my-3'>     {/* col-md-4 my-3 */}
         <div className='card h-100'>
@@ -35,7 +35,7 @@ const Card =({ product }) => {
 						: product.productDesc.substring(0, 60)}
 				</p>
                 <Link
-					to={`/admin/edit/product/${product._id}`}
+					// to={`/admin/edit/product/${product._id}`}
 					type='button'
 					className='btn btn-secondary btn-sm mr-1 my-1 mx-3'
 				>
@@ -45,7 +45,7 @@ const Card =({ product }) => {
                 <button
                     type='button'
                     className='btn btn-danger btn-sm'
-                    onClick={() => dispatch(deleteProduct(product._id))}
+                    // onClick={() => dispatch(deleteProduct(product._id))}
                 >
                     <i className='fa fa-shopping-cart pr-1 mx-1'></i>
                         Purchase
