@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import AdminBody from './AdminBody';
+import UserBody from './UserBody';
 //redux
 import { useDispatch } from "react-redux";
 import { getCategories } from "../redux/actions/categoryActions";
@@ -19,7 +19,7 @@ const UserDashboard = () => {
             <AdminActionBtns />
             <AdminCategoryModal />
             <AdminProjectModal /> */}
-            <AdminBody />
+            <UserBody />
         </section>
     )
 }
