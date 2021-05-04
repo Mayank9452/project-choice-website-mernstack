@@ -7,15 +7,16 @@ import { deleteProduct } from '../redux/actions/productActions';
 const Card =({ product }) => {
     const dispatch = useDispatch();
     return (
-    <div className='col-md-4 my-3'>
+    // <div className='col-md-4 my-3'>     {/* col-md-4 my-3 */}
         <div className='card h-100'>
-            <a href="#!">
+        {/* card h-100 */}
+            {/* <a href="#!"> */}
                 <img 
-                    className='img-fluid w-100'
+                    className='card-img-top'
                     src={`/uploads/${product.fileName}`}
                     alt='product'
                 />
-            </a>
+            {/* </a> */}
 
             <div className='card-body text-center'>
                 <h5>{product.productName}</h5>
@@ -36,9 +37,9 @@ const Card =({ product }) => {
                 <Link
 					to={`/admin/edit/product/${product._id}`}
 					type='button'
-					className='btn btn-secondary btn-sm mr-1 my-1'
+					className='btn btn-secondary btn-sm mr-1 my-1 mx-3'
 				>
-					<i className='far fa-edit pr-1'></i>
+					<i className='far fa-edit pr-1 mx-1'></i>
 					Edit
 				</Link>
                 <button
@@ -46,13 +47,13 @@ const Card =({ product }) => {
                     className='btn btn-danger btn-sm'
                     onClick={() => dispatch(deleteProduct(product._id))}
                 >
-                    <i className='far fa-trash-alt pr-1'></i>
+                    <i className='far fa-trash-alt pr-1 mx-1'></i>
                         Delete
                 </button>
             </div>
 
         </div>
-    </div>
+    //  </div>
     )
 };
 

@@ -7,16 +7,18 @@ import { useSelector } from "react-redux";
      const {products} = useSelector(state => state.products);
      return (
          <div className='container'>
-             <div className='row'>
-                 <div className='card-deck'>
-                     {products && products.map(product => (
-                         <div>
-                             <Card key={product._id} product={product} />
-                         </div>
-                     ))}
-                 </div>
+             <div className='row row-cols-1 row-cols-md-3 g-4'>
+                 {/* <div className="col-sm"> */}
+                    {/* <div className='card-group'> */}
+                        {products && products.map(product => (
+                            <div className="col">
+                                <Card key={product._id} product={product} />
+                            </div>
+                        ))}
+                    </div>
+                 {/* </div> */}
              </div>
-         </div>
+        //  </div>
      );
  }
 
