@@ -1,10 +1,27 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import UserBody from './UserBody';
+//redux
+import { useDispatch } from "react-redux";
+import { getCategories } from "../redux/actions/categoryActions";
+import { getProducts } from "../redux/actions/productActions";
 
-
-const Home = () => {
+const UserDashboard = () => {
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(getCategories());
+    }, [dispatch]);
+    useEffect(() => {
+        dispatch(getProducts());
+    }, [dispatch]);
     return (
-        <p>Inside Home Components</p>
-    );
+        <section>   
+            {/* <AdminHeader />
+            <AdminActionBtns />
+            <AdminCategoryModal />
+            <AdminProjectModal /> */}
+            <UserBody />
+        </section>
+    )
 }
 
-export default Home;
+export default UserDashboard;
